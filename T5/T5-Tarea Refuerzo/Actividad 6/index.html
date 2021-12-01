@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 6 - JmJ</title>
+</head>
+
+<body>
+    <p>Validación de formulario</p>
+
+    <form action="procesar.php" method="post" id="miFormulario">
+        <table>
+            <tr>
+                <td>DNI: </td>
+                <td>
+                    <input type="text" name="dni" id="dni" maxlength="9" pattern="[0-9]{8}[A-Za-z]{1}" title="Introduce 8 números y 1 letra" required/>
+                </td>
+            </tr>
+            <tr>
+                <td>Nombre: </td>
+                <td>
+                    <input type="text" name="nombre" id="nombre" pattern="^((\s?[a-zA-ZáéíóúÁÉÍÓÚñÑ]+){2,4})" title="Introduce entre 2 y 15 letras" required/>
+                </td>
+            </tr>
+            <tr>
+                <td>Fecha Nacimiento: </td>
+                <td>
+                    <input type="text" name="fechaNac" id="fechaNac" pattern="/^(0[1-9]|[1-2]\d|3[01])(\/)(0[1-9]|1[012])\2(\d{4})$/" title="Numero de 9 cifras" required/>
+                </td>
+            </tr>
+            <tr>
+                <td>E-mail: </td>
+                <td>
+                    <input type="text" name="email" id="email" maxlength="15" pattern="[A-Za-z]{2,15}" title="Introduce entre 2 y 15 letras" required/>
+                </td>
+            </tr>
+            <tr>
+                <td>Página Web: </td>
+                <td>
+                    <input type="text" name="pagWeb" id="pagWeb" maxlength="15" pattern="[A-Za-z]{2,15}" title="Introduce entre 2 y 15 letras" required/>
+                </td>
+            </tr>
+            <tr>
+                <td>Contraseña: </td>
+                <td>
+                    <input type="text" name="contraseña" id="contraseña maxlength="15" pattern="[A-Za-z]{2,15}" title="Introduce entre 2 y 15 letras" required/>
+                </td>
+            </tr>
+            <tr>
+                <td>Confirmar Contraseña: </td>
+                <td>
+                    <input type="text" name="confContraseña" id="confContraseña" maxlength="15" pattern="[A-Za-z]{2,15}" title="Introduce entre 2 y 15 letras" required/>
+                </td>
+            </tr>
+            
+        </table>
+        <p id="mensajeError"></p>
+        <p>
+            <input type="submit" value="Guardar" id="enviar" />
+            <input type="reset" value="Ver" id="borrar" />
+        </p>
+    </form>  
+
+    
+    <script>
+        //----------------------------------JAVASCRIPT--------------------------------------
+
+        window.onload = iniciar; //Sin parentesis
+
+        //Esta función asocia un evento a la pulsación del botón enviar.
+        function iniciar() {
+            document.getElementById("enviar").addEventListener("click", validar, false);
+        }
+
+        function validaDNI(){
+            borrarError();
+            var elemento = document.getElementById("dni");
+            if (!elemento.checkValidity()){
+                if (elemento.validity.valueMissing){
+                    error2(elemento, "Debe introducir un DNI");
+                }
+                if (elemento.validity.patternMismatch){
+                    error2(elemento, "Introduce 8 números y 1 letra");
+                }
+                //error(elemento);
+                return false;
+            }
+            return true;
+        }
+
+        function validaNombre(){
+            borrarError();
+            var elemento = document.getElementById("nombre");
+            if (!elemento.checkValidity()){
+                if (elemento.validity.valueMissing){
+                    error2(elemento, "Debe introducir un nombre");
+                }
+                if (elemento.validity.patternMismatch){
+                    error2(elemento, "Solo puedes tener 2 nombres y 2 apellidos como mucho");
+                }
+                //error(elemento);
+                return false;
+            }
+            return true;
+        }
+
+        function validaFechaNac(){
+            var elemento = document.getElementById("fechaNac");
+            if (!elemento.checkValidity()){
+                if (elemento.validity.valueMissing){
+                    error2(elemento, "Debe introducir un Fecha nac");
+                }
+                if (elemento.validity.patternMismatch){
+                    error2(elemento, "Formato de fecha no válido");
+                }
+                //error(elemento);
+                return false;
+            }
+            return true;
+        }
+
+        function validaEdad(){
+            var elemento = document.getElementById("edad");
+            if (!elemento.checkValidity()){     
+                if (elemento.validity.valueMissing){
+                    error2(elemento, "Debe introducir un edad");
+                }
+                if (elemento.validity.rangeOverflow){
+                    error2(elemento, "El valor debe ser menor de 100");
+                }
+                if (elemento.validity.rangeUnderflow){
+                    error2(elemento, "El valor debe ser mayor o igual de 18");
+                }
+                //error(elemento);
+                return false;
+            }
+            return true;
+        }
+
+        function validaTelefono(){
+            var elemento = document.getElementById("telefono");
+            if (!elemento.checkValidity()){
+                if (elemento.validity.valueMissing){
+                    error2(elemento, "Debe introducir un telefono");
+                }
+                if (elemento.validity.patternMismatch){
+                    error2(elemento, "El nombre debe tener 9 numeros");
+                }
+               // error(elemento);
+                return false;
+            }
+            return true;
+        }
+
+
+        function validar(e) {
+            borrarError();
+            if (validaDNI() && validaNombre() && validaFechaNac() && validaTelefono() && validaFecha() && validaCheck() && confirm("Pulsa para enviar el formulario")) {
+                return true;
+            } else {
+                //Previene que el formulario te lleve a la página "procesar.php"
+                e.preventDefault();
+                return false;
+            }
+        }
+
+        function error(elemento){
+            document.getElementById("mensajeError").innerHTML = elemento.validationMessage;
+            elemento.className="error";
+            elemento.focus();
+        }
+
+        function error2(elemento, mensaje){
+            document.getElementById("mensajeError").innerHTML = mensaje;
+            elemento.className="error";
+            elemento.focus();
+        }
+
+        function borrarError(){
+            var formulario = document.forms[0];
+            for (var i = 0; i < formulario.elements.length; i++){
+                formulario.elements[i].className="";
+            }
+        }
+
+    </script>
+    
+</body>
+</html>

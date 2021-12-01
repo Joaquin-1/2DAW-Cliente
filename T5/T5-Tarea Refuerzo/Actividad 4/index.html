@@ -13,13 +13,43 @@
         ser azul (#CCE6FF). Al volver a mover el ratón, el color de fondo vuelve a ser blanco.
     </p>
 
-    <div id=""></div>
+    <div id="div">(O_O)</div>
 
-    
-    
+    <style>
+
+        #div {
+            position: relative;
+            left: 40%;
+            height: 200px;
+            width: 200px;;
+            text-indent: 40%;
+        }
+
+    </style>
 
     <script>
 
+        let div = document.getElementById('div');
+
+        document.addEventListener('mousedown', cambiaColor);
+        document.addEventListener('keydown', cambiaColor);
+        document.addEventListener('mousemove', cambiaColor);
+
+        function cambiaColor(evento){
+
+            evento = window.event;
+
+            if (evento.type == 'mousedown'){
+                div.style.backgroundColor = 'yellow';
+            } else if (evento.type == 'keydown') {
+                div.style.backgroundColor = 'blue';
+            } else if (evento.type == 'mousemove'){
+                div.style.backgroundColor = '#ffffff';
+            }
+
+        }
+
+        
 
 
     </script>
