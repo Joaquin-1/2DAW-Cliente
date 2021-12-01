@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2</title>
+    <style>
+        #formulario {
+            background-color: rgb(49, 47, 47);
+            padding: 10px 50px;
+            border-radius: 35px;
+            display: inline-block; 
+        }
+
+    </style>
+</head>
+
+<body>
+    
+    <form id="formulario" action="" method="GET">
+        <p><input type="range" name="rango" id="rango"  value="0" min="0" max="255" oninput="cuadro.value = rango.value"></p>
+        <p><input type="text" name="cuadro" id="cuadro" oninput="rango.value = cuadro.value"></p>
+
+    </form>
+
+    <script>
+        var rango = document.getElementById("rango");
+        var cuadro = document.getElementById("cuadro");
+
+        cuadro.value = rango.value;
+
+    </script>
+</body>
+
+</html>

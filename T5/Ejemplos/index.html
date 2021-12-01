@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 2 -JmJ</title>
+</head>
+<body>
+
+      <textarea id="text">DelftStack</textarea>
+      <br />
+      <input type="button" id="btn" value="Download" />
+
+      
+      <div id="miDiv">Pinta de rojo
+            <button id="miBoton">Pinta de verde</button>
+      </div>
+
+      <script>
+          /* DESCARGAR FICHERO
+          function download(filename, textInput) {
+
+                var element = document.createElement('a');
+                element.setAttribute('href','data:text/plain;charset=utf-8, ' + encodeURIComponent(textInput));
+                element.setAttribute('download', filename);
+                document.body.appendChild(element);
+                element.click();
+                //document.body.removeChild(element);
+          }
+          document.getElementById("btn")
+                .addEventListener("click", function () {
+                      var text = document.getElementById("text").value;
+                      var filename = "output.txt";
+                      download(filename, text);
+                }, false);
+            */
+
+            
+            /* CAMBIAR COLOR DEPENDIENDO LO QUE CLICKES
+            let boton = document.getElementById("miBoton");
+            let div = document.getElementById("miDiv");
+            boton.addEventListener("click", (e) => {
+                  document.body.style.backgroundColor="green";
+                  e.stopPropagation();
+            });
+            div.addEventListener("click", (e) => {
+                  document.body.style.backgroundColor="red";
+            });
+            */
+
+      </script>
+</body>
+</html>

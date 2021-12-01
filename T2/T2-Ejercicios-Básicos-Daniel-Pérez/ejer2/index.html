@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2</title>
+    <script>
+        function componentes() {
+            /**
+             * Función que muestra el nombre de los componentes, según el número
+             * que el ha introducido el cliente en el input.
+             * 
+            */
+
+            let num = document.getElementById("numero");
+            num = parseInt(num.value);
+            let mensaje;
+
+            switch (true) {
+                case num <= 0:
+                    mensaje = "Not a group";
+                    break;
+                case num == 1:
+                    mensaje = "solo";
+                    break;
+                case num == 2:
+                    mensaje = "duet";
+                    break;
+                case num == 3:
+                    mensaje = "trio";
+                    break;
+                case num == 4:
+                    mensaje = "quartet";
+                    break;
+                case num >= 5:
+                    mensaje = "thes es a large group";
+                    break;
+                default: 
+                    mensaje = "No has introducido un número."
+
+            }
+            document.getElementById("parrafo").innerHTML = mensaje;
+        }
+
+    </script>
+</head>
+
+<body>
+    <p>2. Los grupos musicales reciben un nombre en función del número de componentes.
+        Realiza una serie de sentencias condicionales que:</p>
+    <ul>
+        <li> muestre "not a group" si musicians es menor o igual que O</li>
+        <li>muestre "solo" si rnusicians es igual 1</li>
+        <li>muestre "duet" si rnusicians es igual a 2</li>
+        <li>muestre "trio" si rnusicians es igual a 3</li>
+        <li>muestre "quartet" si rnusicians es igual a 4</li>
+        <li>muestre "thes es a large group" si rnusicians es mayor que 4</li>
+    </ul>
+
+    <label for="numero">Número</label>
+    <input type="text" name="numero" id="numero">
+    <button type="submit" onclick="componentes()">Enviar</button>
+    <p id="parrafo"></p>
+</body>
+
+</html>

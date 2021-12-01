@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 1 - JmJ</title>
+</head>
+<body>
+    <div>
+        <p>1) Crea un array con los números impares del 1 al 21.</p>
+       
+        <p>  a) Calcula el sumatorio de dichos números impares e imprime el resultado.</p>
+
+        <p>  b) Muestra en orden inverso el array creado anteriormente</p>
+
+        <p> c) Lea un valor que escriba el usuario y búsquelo en el array. Indique si la búsqueda tuvo éxito indicando
+            la posición o si no tuvo éxito.</p>
+
+        <p>  d) En caso de tener éxito, borra su valor.</p>
+
+        <p>  e) Muéstrelo ordenado de forma ascendente, y a continuación de forma descendente.</p>
+    </div>
+
+    <input type="button" onclick="sumar()" value="A) Suma">
+    </br>
+    </br>
+    <input type="button" onclick="invertir()" value="B) Invertir">
+    </br>    
+    </br>
+    <input id="number" type="text" name="input"> 
+    <input type="button" onclick="busqueda()" value="C) Busqueda">
+    </br>    
+    </br>
+    <input type="button" onclick="borrar()" value="D) Borrar">
+    </br>    
+    </br>
+    <input type="button" onclick="ascydes()" value="E) Ascend y descend">
+    <p id="resultado"></p>
+    <p id="resultado1"></p>
+
+    <script>
+
+    const numeros = [];
+    let total = 0;
+
+
+    for (let i = 0; i <= 21; i++) {
+
+        if(i % 2 == 1){
+            numeros.push(i);
+        } 
+
+    }
+    
+
+    //A Calcula el sumatorio de dichos números impares e imprime el resultado.
+
+    
+    function sumar(){
+
+        for (i in numeros){
+            total += numeros[i];
+        }
+        console.log(total)
+        
+        document.getElementById("resultado").innerHTML = "La suma es " + total;
+
+
+    }    
+    
+
+    //B Muestra en orden inverso el array creado anteriormente
+
+    
+    function invertir(){
+    
+       
+
+        const inverso = numeros.reverse();
+        document.getElementById("resultado").innerHTML = "La array invertido es " + inverso;
+    
+
+    }
+       
+
+   //C Lea un valor que escriba el usuario y búsquelo en el array. Indique si la búsqueda tuvo éxito indicando la posición o si no tuvo éxito.
+    
+    
+    function busqueda() {
+        
+       
+        let input = document.getElementById("number");
+        let number = (parseInt(input.value));
+        let pos = numeros.indexOf(number);
+
+        document.getElementById("resultado").innerHTML = "La posicion es " + pos;
+          
+    }
+    
+   
+    //D En caso de tener éxito, borra su valor. (Mete un If si la pos es negativa)
+    
+    
+    function borrar() {
+
+        let input = document.getElementById("number");
+        let number = (parseInt(input.value));
+        let pos = numeros.indexOf(number);
+
+        const borrado = numeros.splice(pos, 1);
+        
+        document.getElementById("resultado").innerHTML = "El numero borrado es " + borrado + " y la array queda así: " + numeros;
+
+
+    }
+    
+
+    //E Muéstrelo ordenado de forma ascendente, y a continuación de forma descendente.
+    
+    function ascydes() {
+
+        const ascendente = numeros.sort(function(a, b){return a - b});
+        document.getElementById("resultado").innerHTML = "La array ascendente es " + ascendente ;
+        const descendente = numeros.sort(function(a, b){return b - a});
+        document.getElementById("resultado1").innerHTML = "La array descendente es " + descendente;
+
+    }
+
+    </script>
+    
+</body>
+</html>

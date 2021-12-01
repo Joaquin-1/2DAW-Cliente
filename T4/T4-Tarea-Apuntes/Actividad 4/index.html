@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 4 JmJ</title>
+</head>
+<body>
+    <p>
+        Realiza los cambios necesarios en el ejercicio anterior para que la última acción de generar
+        un nuevo vector a partir de los valores de otro, dejando fuera el menor y el mayor
+        elementos, pase a ser un método del objeto Array
+    </p>
+
+    <script> 
+    
+    const numeros = [];
+
+    for (i = 0; i < 10; i++) {
+
+        numeros[i] = parseInt(Math.random()*100);
+
+    }
+
+    var min = Math.min(...numeros) 
+    var max = Math.max(...numeros) 
+
+    /*
+
+    let pers2 = new Array();
+        pers2.nombre = numeros;
+        pers2.array = numeros.filter(function(age){
+        if(age > min && age < max){
+            return true
+            
+        }
+    })
+    console.log(pers2);
+    console.log(pers2.array);
+
+    */
+
+    function Coche (numeros){
+        this.numeros = numeros;
+    }
+
+    Coche.prototype.muestraDatos = numeros.filter(function(age){
+        if(age > min && age < max){
+            return true  
+        }
+    });   
+
+    let array = new Coche(numeros);
+    console.log(array.numeros);
+    console.log(array.muestraDatos);
+    
+    </script>

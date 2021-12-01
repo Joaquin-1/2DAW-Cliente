@@ -1,0 +1,120 @@
+body {
+    background-color: rgb(217, 85, 80);
+    color: white;
+    font-size: 20px;
+    font-family: "Segoe UI";
+    display: flex;
+    justify-content: center;
+}
+
+main{
+    width: 500px
+}
+
+header{
+    padding: 5px 20px;
+    border-bottom: 2px solid rgb(204, 181, 181);
+    display: flex;
+    justify-content: space-between;
+}
+
+header button{
+    background-color: #7e322f;
+    padding: 5px 10px;
+    color: white;
+    font-weight: bold;
+}
+
+header button:hover{
+    transition: background-color 0.5s;
+    background-color: #ff004c
+}
+
+section{
+    background-color: #dd6662;
+    padding: 20px;
+    margin: 20px 0px;
+    min-height: 200px;
+    
+}
+
+nav {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+
+    
+}
+nav button {
+    width: 25%;
+    color: white;
+    font-weight: bold;
+    border: none;
+    padding: 5px;
+    background-color: #dd6662;
+}
+
+nav button:hover{
+    transition: background-color 0.5s;
+    background-color: #ff004c
+}
+
+.selected {
+    background-color: #553433;
+}
+
+
+#div-reloj{
+    height: 150px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+}
+
+#contador{
+    color: white;
+    font-size: 100px;
+    font-weight: bold;
+}
+
+#div-start{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+#btn-start{
+    height: 50px;
+    width: 150px;
+    font-size: 30px;
+    color: rgb(217, 85, 80);
+    box-shadow: gray 10px;
+}
+
+footer {
+    background-color: #c84e49;
+    color: white;
+    padding: 5px 20px;
+    font-size: 20px;
+
+}
+
+ul li {
+    list-style: none;
+}
+
+/*Modificado a partir de aqui */
+.centrar{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.bordeinferior{
+    padding-bottom: 5px;
+    border-bottom: 2px solid rgb(204, 181, 181);
+}
+

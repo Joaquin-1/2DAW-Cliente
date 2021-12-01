@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2 - Daniel Pérez</title>
+    <script>
+        function extraer() {
+            /**Función que extrae una subcadena de una cadena introducida por el usuario,
+             * según unos delimitadores de inicio y fin, también introducidos por el usuario.
+             */
+
+            let frase = document.getElementById("frase");
+            let ini = document.getElementById("inicio");
+            let fin = document.getElementById("fin");
+            let respuesta = document.getElementById("respuesta");
+            respuesta.innerHTML = "";
+
+            if (frase.value == "" || ini.value == "" || fin.value == "") {
+                respuesta.innerHTML = "Faltan datos por introducir."
+            }
+
+            if (ini.value == fin.value) {
+                respuesta.innerHTML = "Los delimitadores tienen que ser distintos."
+                return;
+            }
+
+
+            let patt = new RegExp(ini.value + ".+" + fin.value);
+            let res = patt.exec(frase.value);
+
+            let iniLon = parseInt(ini.value.toString().length);
+            let finLon = parseInt(fin.value.toString().length);
+
+            res = res.toString().slice(iniLon, - finLon);
+
+            respuesta.innerHTML += `<p>La oración escrita es: "${frase.value}".</p>`;
+            respuesta.innerHTML += `<p>Los delimitadores dentro de la oración son: "${ini.value}" y "${fin.value}".</p>`;
+            respuesta.innerHTML += `<p>La parte entre los delimitadores(su primera y última aparición): "${res}".</p>`;
+
+        }
+    </script>
+</head>
+
+<body>
+    <p>2. Realiza un script que pida al usuario una frase. De ella se extraerá la parte
+        comprendida entre unas marcas de inicio y fin (distintas) que serán indicadas por el usuario</p>
+
+    <p>
+        <label for="frase">Introduce una frase:</label>
+        <input id="frase" name="frase" type="text">
+    </p>
+    <p>
+        <label for="inicio">Marca de inicio:</label>
+        <input id="inicio" name="inicio" type="text">
+    </p>
+    <p>
+        <label for="fin">Marca de fin:</label>
+        <input id="fin" name="fin" type="text">
+    </p>
+    <p>
+        <button onclick="extraer()">Extraer</button>
+    </p>
+
+    <div id="respuesta"></div>
+</body>
+
+</html>

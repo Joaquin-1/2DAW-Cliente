@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3 - Daniel Pérez</title>
+    <script>
+        function validarHora() {
+            /*Función que valida si la hora que introduce el usuario en el input es correcta.*/
+
+            let hora = document.getElementById("hora");
+            let respuesta = document.getElementById("respuesta");
+
+            let patt = /^([0-1][0-9]|[2][0-3])(\:[0-5][0-9]){1,2}$/;
+            let res = patt.test(hora.value);
+
+            if (res) {
+                respuesta.innerHTML = `La hora (${hora.value}) es correcta.`;
+            } else {
+                respuesta.innerHTML = `La hora (${hora.value}) no es correcta, tiene que tener el formato hh:mm:ss o hh:mm.`;
+            }
+        }
+
+    </script>
+
+</head>
+
+<body>
+    <h1>Ejercicio 3</h1>
+    <p>Valida el ingreso de una hora con el formato hh:mm:ss o hh:mm. Ejemplo:</p>
+
+    <p>
+        <label for="hora">Introduce una hora:</label>
+        <input id="hora" type="text" name="hora">
+    </p>
+    <p>
+        <button onclick="validarHora()">Enviar</button>
+    </p>
+    <p id="respuesta"></p>
+
+</body>
+
+</html>

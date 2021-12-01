@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Pomodoro</title>
+    <script src="index.js" defer></script>
+    <link rel="stylesheet" href="estilo.css">
+    <link rel="icon" href="icon-red.png" type="image/png">
+
+</head>
+
+<body>
+    <main>
+        <header>
+            <div><span><img src="icon-white.png" width="20" height="20"> Pomofocus</span></div>
+            <div>
+                <button id="setting">Setting</button>
+            </div>
+        </header>
+
+        <section>
+            <nav>
+                <button id="pomodoro" class="selected">Pomodoro</button>
+                <button id="sbreak">Short Break</button>
+                <button id="lbreak">Long Break</button>
+            </nav>
+            <div id="div-reloj">
+                <p id="contador">25:00</p>
+            </div>
+            <div id="div-start">
+                <button id="btn-start">START</button>
+            </div>
+
+        </section>
+
+        <section>
+            <div>
+                <div><span>Time (minutes)</span></div>
+                <div>
+                    <div><label>Pomodoro</label><input id="inputpomodoro" type="number" min="0" step="1" value="20"></div>
+                    <div><label>Short Break</label><input id="inputsbreak" type="number" min="0" step="1" value="5"></div>
+                    <div ><label>Long Break</label><input id="inputlbreak" type="number" min="0" step="1" value="15"></div>
+                </div>
+            </div>
+ 
+            <div>
+                <div>
+                    <div><span>Long Break interval</span></div>
+                    <input id="bucles" type="number" min="1" step="1" width="70"value="4">
+                </div>
+            </div>
+        </section>
+        <footer>
+            <p>Hecho por:</p>
+            <ul>
+                <li>Joaquín Monge</li>
+                <li>Daniel Pérez</li>
+            </ul>
+        </footer>
+    </main>
+</body>
+
+</html>

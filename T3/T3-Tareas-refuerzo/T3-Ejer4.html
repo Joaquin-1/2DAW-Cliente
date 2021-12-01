@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4 - Daniel Pérez</title>
+    <script>
+        function reloj() {
+            /*Función que crea un reloj y muestra la hora en el title del document.*/
+            let clk = new Date();
+            let hour = clk.getHours();
+            let min = clk.getMinutes();
+            let sec = clk.getSeconds();
+
+            //document.title = hour + ":" + min + ":" +sec;
+            document.title = ((hour < 10) ? "0" + hour : hour) + ":"
+                            + ((min < 10) ? "0" + min : min) + ":"
+                            + ((sec < 10) ? "0" + sec : sec);
+        }
+
+        let relojPeriodico = setInterval(reloj, 1000);  // Para que la hora se actualize cada segundo.
+        let estado = true;  // Estado actual del reloj. Si cambia a false, el reloj se para. 
+
+        function ponerHora() {
+            /*Función que cambia el estado del reloj al pulsar un botón, inciandolo o parandolo.*/
+            if (estado) {
+                window.clearInterval(relojPeriodico);
+            } else {
+                relojPeriodico = setInterval(reloj, 1000);
+            }
+            estado = !estado;
+
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+    <button onclick="ponerHora()">INICIAR/PARAR</button>
+
+</body>
+
+</html>

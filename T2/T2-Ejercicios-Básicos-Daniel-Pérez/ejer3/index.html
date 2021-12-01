@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3 - Daniel Pérez</title>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="contenedor">
+        <div id="enunciado">
+            <p>Uno de los asistentes a una fiesta está interpretando en secreto y sin saberlo a un
+                asesino, y los demás asistentes deben determinar quién de ellos es el asesino.</p>
+        </div>
+        <p>Selección:</p>
+        <div id="selectores">
+            <select name="habitacion" id="habitacion" onclick="describirHabitacion()">
+                <option value="habitaciones" selected>--Habitaciones--</option>
+                <option value="salón de baile">Salón de baile</option>
+                <option value="galería">Galería</option>
+                <option value="sala de billar">Sala de billar</option>
+                <option value="comedor">Comedor</option>
+            </select>
+
+            <select name="sospechoso" id="sospechoso" onclick="describirSospechoso()">
+                <option value="sospechosos" selected>--Sospechosos--</option>
+                <option value="Parkes">Sr. Parkes</option>
+                <option value="Van Cleve">Sra. Van Cleve</option>
+                <option value="Sparr">Sra. Sparr</option>
+                <option value="Kalehoff">Sr. Kalehoff</option>
+            </select>
+
+            Vidas:<span id="vidas">&hearts;&hearts;&hearts;</span>
+            <button id="boton-res" type="submit" onclick="resolver()">Resolver</button>
+        </div>
+
+        <p>Descripción:</p>
+        <div id="desc-box">
+            <p id="descripcionHabitacion"> </p>
+            <p id="descripcionSospechoso"> </p>
+            <p id="respuesta"></p>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3A09 - Daniel Pérez</title>
+    <script>
+
+        // Crear cookie
+        function setCookie(cname, cvalue, exdays) {
+            var d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            var expires = "expires =" + d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + "; path = /";
+        }
+
+        // Obtener valor cookie
+        function getCookie(cname) {
+            let name = cname + "=";
+            let ca = document.cookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+
+        function visita() {
+            //Si visitas existe, incrementará en 1 las visitas, y lo muestra al cargar la página
+            if (getCookie("visitas") != "") {
+                let contador = parseInt(getCookie("visitas")) + 1;
+                setCookie("visitas", contador, 365);
+
+                alert("Has visitado la página " + getCookie("visitas") + " veces!");
+
+                //Si visitas no existe, aparecerá un confirm, y si acepta, creará "visitas"
+            } else {
+                let cookieVisitas = confirm("Aceptar cookies.");
+                if (cookieVisitas) {
+                    setCookie("visitas", "1", 365);
+                    alert("Bienvenido a la página!")
+                } else {
+                    alert("Has rechazado las cookies.");
+                }
+            }
+
+        }
+
+        visita();
+
+        // Borrar cookie
+        //setCookie("visitas", "", 0);
+
+    </script>
+</head>
+
+<body>
+    <h1>Ejercicio 3A09</h1>
+    <ul>
+        <li>Contador de visitas con aviso de cookies.</li>
+        <li>Crear aplicación que muestre el número de veces que se ha entrado en ella.</li>
+        <li>Se hará mediante una cookie que caducará después de un año.</li>
+        <li>En primer lugar se avisará con un cuadro de confirmación, que se usarán cookies. Si el usuario no
+            acepta cookies se borrará y no se mostrarán las visitas.</li>
+        <li>El cuadro debe salir una vez por sesión.</li>
+    </ul>
+
+</body>
+
+</html>

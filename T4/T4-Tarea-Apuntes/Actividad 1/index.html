@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 1 JMJ</title>
+</head>
+<body>
+
+    <p>Ejercicio 4A01.</p>
+        <ul>
+            <li>
+            Crea  un  programa  que  le  pida  al  usuario  que  introduzca  una  serie  de  números  y  calcule  la  media 
+            aritmética. 
+            </li>
+            <li>
+            Se debe resolver el problema definiendo una función con parámetros REST e invocándola con un argumento que utilice el operador SPREAD
+            </li>
+        </ul> 
+
+    <label> Introduce números: </label>
+    <input id="number" type="text" name="input"> 
+    <input type="button" onclick="media()" value="Calcular">
+    <p id="respuesta"></p>
+
+
+    <script>
+
+        function sumar(...array) {
+            let total = 0;
+            for (let i in array){
+                total += array[i];
+            }
+            return total;
+        }
+
+
+        function media(){
+            let input = document.getElementById("number");
+            let total = 0;
+            let arrparseado = input.value.split(",").map(elem => Number(elem));
+            console.log(arrparseado)
+            console.log(typeof(arrparseado))
+
+            total += sumar(...arrparseado);
+            console.log(total);
+            let media = total / arrparseado.length;
+            console.log(media)
+            console.log(typeof(media));
+            document.getElementById("respuesta").innerHTML = "La media es: " + media;
+
+
+        }
+
+
+    </script>
+
+        
+</body>
+</html>

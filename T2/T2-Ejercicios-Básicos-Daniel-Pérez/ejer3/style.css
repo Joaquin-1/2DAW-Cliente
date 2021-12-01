@@ -1,0 +1,44 @@
+body{
+    background-color: black;
+    color: white;
+}
+
+#contenedor {
+    margin: 50px;
+    font-size: 20px;
+}
+#enunciado {
+    background-color: rgb(34, 33, 33);
+    padding: 10px 50px;
+    color: red;
+    margin-bottom: 20px;
+    
+}
+
+#selectores {
+    background-color: rgb(34, 33, 33);
+    padding: 20px;
+    width: 500px;
+    
+}
+#sospechoso {
+    margin-right: 30px;
+}
+
+#vidas {
+    color: red;
+    margin-left: 15px;
+}
+
+#boton-res{
+    float: right;
+}
+
+#desc-box{
+    background-color: rgb(201, 201, 201);
+    padding: 20px;
+    width: 500px;
+    color:rgb(43, 42, 42);
+    font-weight: bold;
+    font-style: italic;
+}

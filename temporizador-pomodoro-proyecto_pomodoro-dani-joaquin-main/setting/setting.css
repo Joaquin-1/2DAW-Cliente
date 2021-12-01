@@ -1,0 +1,26 @@
+#divsetting {
+    background-color: white;
+    color: black;
+    width: 420px;
+    padding: 20px;
+    position: absolute;
+    border: 3px solid gray;
+    border-radius: 20px
+}
+
+.centrar {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+
+}
+
+.bordeinferior {
+    padding-bottom: 5px;
+    border-bottom: 2px solid rgb(204, 181, 181);
+}
+
+.lbr {
+    padding-top: 20px;
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 3 JmJ</title>
+</head>
+<body>
+    <p>
+        Realizar el ejercicio 4A02, aplicando métodos de orden superior
+        Crear un vector de 10 elementos con valores aleatorios comprendidos entre 0 y 1000.
+        Buscar el menor y el mayor.
+        Generar otro vector a partir de él que deje fuera dichos valores.
+    </p>
+
+    <script> 
+    
+    const numeros = [];
+
+    for (i = 0; i < 10; i++) {
+
+        numeros[i] = parseInt(Math.random()*100);
+
+    }
+
+    numeros.forEach(function(value, index){
+        console.log(`${value}, ${index}`);
+    })
+
+    var min = Math.min(...numeros) 
+    var max = Math.max(...numeros) 
+
+    const array = numeros.filter(function(age){
+        if(age > min && age < max){
+            return true
+            
+        }
+    })
+    console.log(array);
+
+    /*
+
+    
+
+    const array = numeros;
+
+    let removed1 = array.splice(array.indexOf(min), 1)
+    let removed2 = array.splice(array.indexOf(max), 1)
+    document.write("El elemento mas pequeño de la array es: " + removed1 + " " + typeof(removed1) + "<br>");
+    document.write("El elemento mas grande de la array es: " + removed2 + " " + typeof(removed2) + "<br>");
+    document.write("El array inicial modificado es: " + array + " " +typeof(array) + "<br>");
+    
+    */
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setting</title>
+    <link rel="stylesheet" href="setting.css">
+    <script src="setting.js" defer></script>
+</head>
+
+<body>
+    <div id="divsetting">
+        <div class="centrar bordeinferior">
+            <div><span>TIMER SETTING</span></div>
+            <div><button id="salirsetting">X</button></div>
+        </div>
+        <div><span>Time (minutes)</span></div>
+        <div class="bordeinferior">
+            <div class="centrar"><label>Pomodoro</label><input id="inputpomodoro" type="number" min="0" step="1"></div>
+            <div class="centrar"><label>Short Break</label><input id="inputsbreak" type="number" min="0" step="1"></div>
+            <div class="centrar"><label>Long Break</label><input id="inputlbreak" type="number" min="0" step="1"></div>
+        </div>
+        <div class="centrar lbr">
+            <div><span>Long Break interval</span></div>
+            <div><input id="inputbucles" type="number" min="1" step="1" width="70"></div>
+        </div>
+        <div>
+            <button id="btn-confirmar">CONFIRMAR</button>
+        </div>
+
+    </div>
+</body>
+
+</html>

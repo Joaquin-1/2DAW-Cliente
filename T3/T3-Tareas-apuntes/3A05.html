@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3A05</title>
+    <script>
+        function mostrarFecha() {
+            let hoy = new Date();
+            let fechaNac = new Date(1995, 6, 18);
+            let ms = hoy - fechaNac;
+
+        
+            let years = hoy.getFullYear() - fechaNac.getFullYear();
+            let months = hoy.getMonth() - fechaNac.getMonth() - 1;
+            let days = hoy.getDate() - fechaNac.getDate() + 30;
+
+            document.getElementById("parrafo").innerHTML = `Tengo ${years} años, ${months} meses y ${days} días.`;
+
+        }
+
+
+    </script>
+</head>
+
+<body>
+    <h1>Ejercicio 3A05</h1>
+    <p>Muestra los meses, días y años que tienes, haciendo uso de los métodos del objeto Date</p>
+    <button onclick="mostrarFecha()">Mostrar</button>
+    <p id="parrafo"></p>
+
+</body>
+
+</html>

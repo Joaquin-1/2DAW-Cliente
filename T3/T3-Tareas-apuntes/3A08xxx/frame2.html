@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var color1;
+        var color2;
+        var color3;
+
+        function cambiarColor() {
+            let color = window.parent.frames[0].document.getElementById("color");
+            let posicion = window.parent.frames[0].document.getElementById("posicion").value;
+
+            if (posicion == "left") {
+                window.parent.frames[0].document.body.style = "background-color:" + color.value;
+                color1 = window.parent.frames[0].document.body.style['background-color'];
+
+            } else if (posicion == "center") {
+                window.parent.frames[1].document.body.style = "background-color:" + color.value;
+                color2 = window.parent.frames[1].document.body.style['background-color'];
+
+            } else {
+                window.parent.frames[2].document.body.style = "background-color:" + color.value;
+                color3 = window.parent.frames[2].document.body.style['background-color'];
+
+            }
+
+
+            if (color1 == "red" && color2 == "yellow" && color3 == "red") {
+                let audio = window.parent.frames[2].document.getElementById("audio");
+                //Cambiar titulo del padre
+                window.parent.document.title = "ARRIBA ESPAÑA";
+                //(Poner atributo controls para el menú en audio)
+                audio.innerHTML = `<audio src="himno-de-espana.mp3" autoplay></audio>`;
+
+
+            }
+
+        }
+
+
+    </script>
+</head>
+
+<body>
+    <button onclick="cambiarColor()">Cambiar color</button>
+</body>
+
+</html>

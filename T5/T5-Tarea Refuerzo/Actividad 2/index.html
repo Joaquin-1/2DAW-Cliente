@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 2 - JmJ</title>
+</head>
+<body>
+
+    <p>2. Realizar un script que permita mover una caja dentro de la ventana del navegador tanto
+        con las teclas de desplazamiento del teclado central como con las del teclado numérico.
+    </p>
+
+    <p id="resultado"></p>
+
+    <div id="pane">
+        <div id="box"></div>
+    </div>
+
+    <style>
+
+        #pane {
+            position:relative;
+            width:300px; height:300px;
+            border:2px solid red;
+        }
+        
+        #box {
+            position:absolute; top:140px; left:140px;
+            width:20px; height:20px;          
+            background-color:black;
+        }
+
+        
+    </style>
+
+    <script> 
+    
+    var pane = $('#pane'),
+    box = $('#box'),
+    w = pane.width() - box.width(),
+    d = {},
+    x = 3;
+
+function newv(v,a,b) {
+    var n = parseInt(v, 10) - (d[a] ? x : 0) + (d[b] ? x : 0);
+    return n < 0 ? 0 : n > w ? w : n;
+}
+
+$(window).keydown(function(e) { d[e.which] = true; });
+$(window).keyup(function(e) { d[e.which] = false; });
+
+setInterval(function() {
+    box.css({
+        left: function(i,v) { return newv(v, 37, 39); },
+        top: function(i,v) { return newv(v, 38, 40); }
+    });
+}, 20);
+
+    
+    
+    </script>
+
+    
+</body>
+</html>

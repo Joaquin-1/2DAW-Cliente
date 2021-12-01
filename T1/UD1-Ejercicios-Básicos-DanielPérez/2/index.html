@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 2 - Daniel Pérez</title>
+    <style>
+        .test {
+            background-color: rgb(208, 214, 235);
+            border: solid 2px blue;
+            padding: 10px;
+            margin: 10px;
+            width: 50%;
+
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Actividad 2</h1>
+    <p>2. Realiza un test de 10 preguntas donde cada pregunta tenga dos botones (verdadero
+        y falso). Si se acierta, la frase se pondrá en verde, si no se pondrá en rojo</p>
+    <ul>
+        <li>Respuesta correcta = 1 punto</li>
+        <li>Respuesta incorrecta -0.5 puntos</li>
+    </ul>
+
+
+    <div class="test">
+        <p id="q1"> 1) HTML un lenguaje de programación.</p>
+        <button id="b1t" onclick="botonTrue(1)">Verdadero</button>
+        <button id="b1f" onclick="botonFalse(1)">Falso</button>
+    </div>
+
+    <div class="test">
+        <p id="q2"> 2) Firefox es el navegador más utilizado.</p>
+        <button id="b2t" onclick="botonTrue(2)">Verdadero</button>
+        <button id="b2f" onclick="botonFalse(2)">Falso</button>
+    </div>
+
+    <div class="test">
+        <p id="q3"> 3) Visual Studio Code es el IDE más utilizado. </p>
+        <button id="b3t" onclick="botonTrue(3)">Verdadero</button>
+        <button id="b3f" onclick="botonFalse(3)">Falso</button>
+    </div>
+
+    <div class="test">
+        <p id="q4"> 4) Front-end es la parte de un sitio web que interactúa con los usuarios.</p>
+        <button id="b4t" onclick="botonTrue(4)">Verdadero</button>
+        <button id="b4f" onclick="botonFalse(4)">Falso</button>
+    </div>
+
+    <div class="test">
+        <p id="q5"> 5) Internet Explorer fue el primer navegador web.</p>
+        <button id="b5t" onclick="botonTrue(5)">Verdadero</button>
+        <button id="b5f" onclick="botonFalse(5)">Falso</button>
+    </div>
+
+    <div class="test">
+        <p id="q6"> 6) JavaScript es un lenguaje de programación de scripting.</p>
+        <button id="b6t" onclick="botonTrue(6)">Verdadero</button>
+        <button id="b6f" onclick="botonFalse(6)">Falso</button>
+    </div>
+
+    <div class="test">
+        <p id="q7"> 7) CSS es un lenguaje de diseño gráfico para un lenguaje como HTML.</p>
+        <button id="b7t" onclick="botonTrue(7)">Verdadero</button>
+        <button id="b7f" onclick="botonFalse(7)">Falso</button>
+    </div>
+
+    <div class="test">
+        <p id="q8"> 8) El código JS solo se puede introducir dentro del códgio HTML.</p>
+        <button id="b8t" onclick="botonTrue(8)">Verdadero</button>
+        <button id="b8f" onclick="botonFalse(8)">Falso</button>
+    </div>
+
+    <div class="test">
+        <p id="q9"> 9) El consorcio W3C es quien controla las normas acerca de HTML y DOM en la actualidad. </p>
+        <button id="b9t" onclick="botonTrue(9)">Verdadero</button>
+        <button id="b9f" onclick="botonFalse(9)">Falso</button>
+    </div>
+
+    <div class="test">
+        <p id="q10"> 10) JavaScript es un lenguaje de tipado debil y dinámico.</p>
+        <button id="b10t" onclick="botonTrue(10)">Verdadero</button>
+        <button id="b10f" onclick="botonFalse(10)">Falso</button>
+    </div>
+
+    <div class="test">
+        <button id="fin" onclick="finalizar()">FINALIZAR</button>
+    </div>
+    <script>
+        const respuestas = [false, false, true, true, false, true, true, false, false, true];
+        let contestado = 0;
+        let calificacion = 0;
+
+        function botonTrue(pregunta) {
+            /*
+             Función que al pulsar el botón "Verdadero", comprueba si es verdadero o falso
+             y cambia el texto de la pregunta a color a verde si la opción elegida es 
+             correcta, o rojo si el usuario se ha equivocado. Luego desactiva los botones.
+            */
+            if (respuestas[pregunta - 1] == true) {
+                document.getElementById("q" + pregunta).style.color = "green";
+                calificacion++;
+            } else {
+                document.getElementById("q" + pregunta).style.color = "red";
+                calificacion -= 0.5;
+
+            }
+            document.getElementById("b" + pregunta + "t").disabled = true;
+            document.getElementById("b" + pregunta + "f").disabled = true;
+            contestado++;
+        }
+
+        function botonFalse(pregunta) {
+            /*
+             Función que al pulsar el botón "Falso", comprueba si es verdadero o falso
+             y cambia el texto de la pregunta a color a verde si la opción elegida es 
+             correcta, o rojo si el usuario se ha equivocado. Luego desactiva los botones.
+            */
+            if (respuestas[pregunta - 1] == false) {
+                document.getElementById("q" + pregunta).style.color = "green";
+                calificacion++;
+
+            } else {
+                document.getElementById("q" + pregunta).style.color = "red";
+                calificacion -= 0.5;
+
+            }
+            document.getElementById("b" + pregunta + "t").disabled = true;
+            document.getElementById("b" + pregunta + "f").disabled = true;
+            contestado++;
+        }
+
+        function finalizar() {
+            /*
+                Función que muestra una calificación por pantalla, al terminar el test.
+                En el caso de que no se conteste todas, se le preguntará al usuario si 
+                desea finalizar el test o seguir contestando.
+            */
+            if (contestado < 10) {
+                opc = confirm("Tienes preguntas sin contestar, ¿quieres finalizar el test?");
+                if (opc == true) {
+                    if (calificacion < 0) {
+                        calificacion = 0;
+                    }
+                    alert("Tu puntuación es " + calificacion + "/10.")
+                }
+            } else {
+                if (calificacion < 0) {
+                    calificacion = 0;
+                }
+                alert("Tu puntuación es " + calificacion + "/10.")
+            }
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+#contenedor {
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+    display: grid;
+    grid-template-areas: "h h" 
+                        "n n " 
+                        "s a" 
+                        "f f";
+    grid-template-columns: 10fr 2fr;
+    grid-template-rows: 100px 50px 600px 100px;
+    
+}
+
+.centrar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header{
+    grid-area: h;
+    background-color: gray;
+    margin-bottom: 1%;
+  
+}
+
+nav{
+    grid-area: n;
+    background-color: lightgrey;
+    margin-bottom: 1%;
+}
+
+section{
+    grid-area: s;
+    background-color: lightgrey;
+    margin-right: 1%;
+}
+aside{
+    grid-area: a;
+    background-color: gray;
+    margin-left: 1%;
+}
+
+footer{
+    grid-area: f;
+    background-color: gray;
+    margin-top: 1%;
+}

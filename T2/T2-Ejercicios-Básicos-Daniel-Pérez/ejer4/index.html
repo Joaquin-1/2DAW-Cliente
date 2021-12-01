@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4</title>
+    <script>
+        function divisible() {
+            /**
+             * Función que muestra los números del 1 al 20, y si son divisibles
+             * por 3, 5 , o ambos, junto al número. En el caso de que no sean 
+             * divisibles, solo muestra el número.
+            */
+
+            let num = 1;
+
+            while (num <= 20) {
+
+                if (num % 3 == 0 && num % 5 == 0) {
+                    document.write(num + " --> Divisible por 3 y 5 <br>");
+                } else if (num % 3 == 0) {
+                    document.write(num + " --> Divisible por 3<br>");
+                } else if (num % 5 == 0) {
+                    document.write(num + " --> Divisible por 5<br>");
+                } else {
+                    document.write(num + "<br>");
+                }
+                num++;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <p>4. Escribe un bucle while que:</p>
+    <ul>
+        <li>Recorra del 1 al 20</li>
+        <li>Si el número es divisible por 3 que muestre "Divisible por 3"</li>
+        <li>Si el número es divisible por 5 que muestre "Divisible por 5"</li>
+        <li>Si es divisible por 3 y 5 que muestre "Divisible por 3 y 5"</li>
+        <li>Si no es dividible ni por 3 ni por 5 que muestre el número</li>
+    </ul>
+    <script>divisible()</script>
+
+
+</body>
+
+</html>

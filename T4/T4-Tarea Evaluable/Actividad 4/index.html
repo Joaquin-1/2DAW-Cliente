@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 4 - JmJ</title>
+</head>
+<body>
+
+    <div>
+
+    <p>4) Usando métodos de arrays de orden superior </p>
+    <p>a) Pedir al usuario que introduzca una frase.</p>
+    <p>b) Quitar todos los números de dicha frase</p>
+    <p>c) Mostrar el texto generando el efecto TypeWritter (el texto se muestra simulando que se está tecleando
+        en ese momento)</p>
+    <p>d) Incorporar el efecto cursor intermitente.</p>
+
+    </div>
+
+    <label>Pon una frase</label>
+    <input id="input" type="text" name="input"> 
+    </br>
+    </br>
+    <input type="button" onclick="generarFrase()" value="A) Generar Frase">
+    <input type="button" onclick="generarArray()" value="B) Quitar número">
+    <input type="button" onclick="typeWriter()" value="C) TypeWriter y D)Cursor Intermitente">
+    <p id="resultado"></p>
+    <p id="resultado1"></p>
+
+    <script>
+
+
+        //A Pedir al usuario que introduzca una frase.
+
+        function generarFrase() {
+
+            let input = document.getElementById("input").value;
+            document.getElementById("resultado").innerHTML = "El array es: " + input;
+
+        }
+
+        //B Quitar todos los números de dicha frase
+
+        function generarArray() {
+
+            let input = document.getElementById("input").value;
+            let arrayDeCadenas = input.split(" ");
+            let arrayNumeros= arrayDeCadenas.filter(elem => !Number.isInteger(parseInt(elem)))
+
+            document.getElementById("resultado").innerHTML = "El array es: " + arrayDeCadenas;
+            document.getElementById("resultado1").innerHTML = "El array es: " + arrayNumeros;
+
+
+        }
+
+        //C Mostrar el texto generando el efecto TypeWritter (el texto se muestra simulando que se está tecleando
+        // en ese momento)
+  
+        let intervalo;
+
+        function typeWriter() {
+            let input = document.getElementById("input").value;
+            let array = input.split("");
+            resultado = document.getElementById("resultado");
+            console.log(array);
+            console.log(array.length);
+        
+            let contArray = 0;
+            let arrayTypeWriter = [];
+
+
+            let cursor;
+            let contCursor = 0;
+
+            function typeWriter1() {
+                //APARTADO D
+                contCursor++;
+        
+                if (contCursor % 2 == 0) {
+                cursor = "";
+                } else {
+                    cursor = "|^|"
+                }
+            
+                //APARTADO C
+                if(contArray < array.length) {
+                    arrayTypeWriter.push(array[contArray]);
+                    console.log(arrayTypeWriter);
+                    contArray++;
+                    resultado.innerHTML = `<p>${arrayTypeWriter.join("")}<span>${cursor}</span></p>`;
+                }
+            }
+            typeWriter1();
+
+            intervalo = window.setInterval(typeWriter1, 500);
+
+        }
+
+        //D Incorporar el efecto cursor intermitente. ESTA HECHO ARRIBA PARA NO TENER QUE PONER DE NUEVO 
+        // EL APARTADO C.
+
+        function cursorIntermitente(){
+
+            let cursor = "|^|";
+            let i = 0;
+
+            if (i % 2 == 0) {
+                cursor = "";
+
+            } else {
+                cursor = "|^|"
+            }
+            
+
+
+        }
+
+        
+        
+        
+
+        
+        
+
+    </script>
+    
+</body>
+</html>

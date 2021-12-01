@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3A09 - Daniel Pérez</title>
+    <script>
+        // Guardar información con LocalStorage
+        if (typeof (Storage) != "undefined") {
+            //Si visitas existe, incrementará en 1 las visitas, y lo muestra al cargar la página
+            if (localStorage.getItem("visitas") != null) {
+                let contador = parseInt(localStorage.getItem("visitas")) + 1;
+                localStorage.setItem("visitas", contador);
+
+                alert("Has visitado la página " + localStorage.getItem("visitas") + " veces!");
+
+            //Si visitas no existe, aparecerá un confirm, y si acepta, creará "visitas"
+            } else {
+                let cookieVisitas = confirm("Aceptar cookies.");
+                if (cookieVisitas) {
+                    localStorage.setItem("visitas", "1");
+                    alert("Bienvenido a la página!")
+                } else {
+                    alert("Has rechazado las cookies.");
+                }
+            }
+
+        } else {
+            alert("El navegador no soporta WebStorage.");
+        }
+
+    </script>
+</head>
+
+<body>
+    <h1>Ejercicio 3A09 (LocalStorage)</h1>
+    <ul>
+        <li>Contador de visitas con aviso de cookies.</li>
+        <li>Crear aplicación que muestre el número de veces que se ha entrado en ella.</li>
+        <li>Se hará mediante una cookie que caducará después de un año.</li>
+        <li>En primer lugar se avisará con un cuadro de confirmación, que se usarán cookies. Si el usuario no 
+            acepta cookies se borrará y no se mostrarán las visitas.</li>
+        <li>El cuadro debe salir una vez por sesión.</li>
+    </ul>
+
+</body>
+
+</html>

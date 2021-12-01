@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3 - Daniel Pérez</title>
+    <script>
+        function validarCoordenada() {
+            let coordenada = document.getElementById("coordenada");
+            let parrafo = document.getElementById("parrafo");
+
+            let patt = /^\(-?\d{1,3},-?\d{1,3}\)$/;
+            let res = patt.test(coordenada.value);
+
+            if (res) {
+                parrafo.innerHTML = "La coordenada " + coordenada.value + " es correcta.";
+            } else {
+                parrafo.innerHTML = "La coordenada introducida es incorrecta";
+            }
+
+        }
+
+    </script>
+</head>
+
+<body>
+    <h1>Ejercicio 3A03</h1>
+    <p>Solicita el ingreso de la coordenada de un punto. El formato a ingresar por teclado es:</p>
+    <ul>
+        <li>(999,999)</li>
+        <li>Los números pueden tener entre 1 y 3 dígitos.</li>
+    </ul>
+    <p>Usa el método test( )</p>
+
+    <label for="coordenada">Coordenada: </label>
+    <input type="text" name="coordenada" id="coordenada">
+    <button onclick="validarCoordenada()">Validar</button>
+    <p id="parrafo"></p>
+</body>
+
+</html>

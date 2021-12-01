@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 3 - Daniel Pérez</title>
+    <style>
+        #botones {
+            background-color: rgb(51, 45, 45);
+            display: inline-block;
+            padding: 15px;
+        }
+
+        #miParrafo{
+            font-size: 30px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>Actividad 3</h1>
+    <p>3. Diseña una web con tres botones para que al pulsarlos se genere un mensaje de
+        bienvenida en francés, inglés y castellano, en la misma página. El mensaje irá en un
+        párrafo. Los mensajes tendrán un color diferente según el idioma</p>
+
+    <p id="miParrafo"></p>
+    <div id="botones">
+        <button onclick="spain()">Español</button>
+        <button onclick="english()">English</button>
+        <button onclick="french()">Français</button>
+    </div>
+
+    <script defer>
+        function spain() {
+            const parrafo = document.getElementById("miParrafo");
+            parrafo.innerHTML = "¡BIENVENIDO!";
+            parrafo.style.color = "red";
+        }
+        function english() {
+            const parrafo = document.getElementById("miParrafo");
+            parrafo.innerHTML = "WELCOME!";
+            parrafo.style.color = "blue";
+        }
+        function french() {
+            const parrafo = document.getElementById("miParrafo");
+            parrafo.innerHTML = "BIENVENUE!";
+            parrafo.style.color = "green";
+        }
+    </script>
+</body>
+
+</html>

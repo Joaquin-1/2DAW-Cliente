@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 5 - JmJ</title>
+</head>
+<body>
+
+    <p>5) Crear objeto Vehículo. </p>
+        <p>a) Crear constructor con las propiedades: marca, modelo, color y año fabricación.</p>
+        <p>b) Instanciar dos objetos.</p>
+        <p>c) Mostrar por pantalla una propiedad con notación por puntos. Objeto 1 - marca.</p>
+        <p>d) Mostrar por pantalla una propiedad con notación por corchetes. Objeto 2 - color.</p>
+        <p>e) Crear el método mostrarDatos.</p>
+        <p>f) Crear un método acelerar(velocidad). Mostrará por pantalla que el coche ha acelerado a la velocidad
+        pasada.</p>
+        <p>g) Crear un método con función interna arrancar. Mostrará por pantalla que el coche de marca _,
+        modelo_, de color_ ha arrancado. (Dentro del constructor)</p>
+        <p>h) Asignar una nueva propiedad cilindrada.</p>
+        <p>i) Asignar un nuevo método frenar. Mostrará por pantalla que el coche de marca_, modelo_, color_ ha
+        parado.</p>
+        <p>j) Muestra todas las propiedades de Objeto1 utilizando: for in , Object.hasOwnPropertyNames(),
+        Object.keys().</p>
+        <p>k) Modifica los descriptores de las propiedades para que no se muestren los métodos ni la propiedad
+        marca al usar for...in y Object.keys. Muestra de nuevo las propiedades del Objeto1.
+        </p>
+        <label>--------------------------------------------------------------------</label>
+        </br>
+        <label>Los apartados que no estan imprimidos por pantalla, están en la consola para que se entienda mejor</label>
+    <p id="parrafo1"></p>
+    <p id="parrafo2"></p>
+    <p id="parrafo3"></p>
+    <p id="parrafo4"></p>
+    <p id="parrafo5"></p>
+    <p id="parrafo6"></p>
+    <p id="parrafo7"></p>
+    <p id="parrafo8"></p>
+
+
+        <script>
+
+            //A Crear constructor con las propiedades: marca, modelo, color y año fabricación.
+
+            function Vehiculo(marca, modelo, color, anoFabricacion) {
+                this.marca = marca;
+                this.modelo = modelo;
+                this.color = color;
+                this.anoFabricacion = anoFabricacion;
+                //G Crear un método con función interna arrancar. Mostrará por pantalla que el coche de marca _,
+                //modelo_, de color_ ha arrancado. (Dentro del constructor)
+                this.arrancar = function(arrancado){
+                    
+                    if(arrancado == true) {
+                        return("El " + this.marca + " " + this.modelo + " esta arrancado")
+                    } else {
+                        return("El " + this.marca + " " + this.modelo + " no esta arrancado")
+                    }
+                    
+                    
+                }
+                
+            }
+
+            
+
+            //B Instanciar dos objetos.
+
+            const coche1 = new Vehiculo('Renault', 'Clio', 'Beige', '2005', '10'); 
+            const coche2 = new Vehiculo('Seat', 'Marbella', 'Blanco', '2016', '10'); 
+            
+            
+
+            //C Mostrar por pantalla una propiedad con notación por puntos. Objeto 1 - marca.
+
+            document.getElementById("parrafo1").innerHTML = "coche1.marca = 'Ford';"
+            document.getElementById("parrafo2").innerHTML = coche1.marca = 'Ford';
+            console.log(coche1.marca = 'Ford')
+            
+
+            //D Mostrar por pantalla una propiedad con notación por corchetes. Objeto 2 - color.
+            document.getElementById("parrafo3").innerHTML = "coche2['color'] = 'Negro'";
+            document.getElementById("parrafo4").innerHTML = coche2['color'] = 'Negro';
+            console.log(coche2['color'] = 'Negro')
+            //E Crear el método mostrarDatos.
+
+
+            Vehiculo.prototype.mostrarDatos = function(){
+                return("El coche de la marca "+this.marca+" "+this.modelo+" es de color "
+                +this.color+" y se fabricó el "+this.anoFabricacion+". Arrancado: "+this.arrancar(true));
+
+            }
+            document.getElementById("parrafo5").innerHTML = coche1.mostrarDatos()
+            console.log(coche1.mostrarDatos())
+            
+            //F Crear un método acelerar(velocidad). Mostrará por pantalla que el coche ha acelerado 
+            //a la velocidad pasada.
+
+            Vehiculo.prototype.acelerar = function(velocidad){
+
+                return("El coche de la marca "+this.marca+" "+this.modelo+" es de color "
+                +this.color+" y se fabricó el "+this.anoFabricacion+" y ha acelerado.");
+
+            }
+            document.getElementById("parrafo6").innerHTML = coche2.acelerar()
+            console.log(coche2.acelerar())
+
+
+            //G Crear un método con función interna arrancar. Mostrará por pantalla que el coche de marca _,
+            //modelo_, de color_ ha arrancado. (Dentro del constructor)
+            document.getElementById("parrafo7").innerHTML = coche1.arrancar(1)
+            console.log(coche1.arrancar(false))
+            //H Asignar una nueva propiedad cilindrada.
+
+            Object.defineProperty(Vehiculo, 'cilindrada',
+            {enumerable: true, configurable: true, writable: true});
+            coche1.cilindrada = '10';
+            console.log(coche1.cilindrada);
+            //Muestra el objeto coche1 con su cilindrada.
+            console.log(coche1);
+
+
+            //I Asignar un nuevo método frenar. Mostrará por pantalla que el coche de marca_, modelo_, color_ ha
+            //parado.
+            Vehiculo.prototype.frenar = function(){
+
+                return("El coche de la marca "+this.marca+" "+this.modelo+" es de color "
+                +this.color+" y se fabricó el "+this.anoFabricacion+" y ha frenado.");
+
+            }
+            document.getElementById("parrafo8").innerHTML = coche1.frenar();
+            console.log(coche1.frenar())
+
+            //J Muestra todas las propiedades de Objeto1 utilizando: for in , Object.getOwnPropertyNames(),
+            //Object.keys().
+
+            let maravilla123 = [];
+            for (let i in coche1){
+
+                if (typeof coche1[i] != 'function'){
+                    maravilla123.push(i);
+                }
+                
+            }
+            console.log(maravilla123);
+            console.log(Object.getOwnPropertyNames(coche1));
+            console.log(Object.keys(coche1));
+
+
+            //K k) Modifica los descriptores de las propiedades para que no se muestren los métodos ni la propiedad
+            //marca al usar for...in y Object.keys. Muestra de nuevo las propiedades del Objeto1.
+
+            Object.defineProperties(coche1, 
+            {marca: {enumerable: false, configurable: false, writable: false},
+            arrancar: {enumerable: false},
+            });
+
+
+            let maravilla1234 = []
+            for (let i in coche1){
+                    maravilla1234.push(i);
+            }
+            
+            console.log(maravilla123);
+            console.log(Object.keys(coche1));
+
+
+
+
+
+            
+        </script>
+    
+</body>
+</html>

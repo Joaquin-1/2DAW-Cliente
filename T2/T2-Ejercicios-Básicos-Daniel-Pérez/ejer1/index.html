@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1 - UT2</title>
+    <script>
+        function esPar() {
+            /**
+             * Función que comprueba si es par o impar, según
+             * el número introducido por el usuario, y muestra el resultado.
+             * 
+            */
+
+            let num = document.getElementById("numero");
+
+            if (num.value % 2 == 0) {
+                alert("Es par")
+            } else {
+                alert("Es impar")
+            }
+        }
+        
+    </script>
+</head>
+
+<body>
+    <p>1. Escribe una sentencia if...else que a partir de un valor recibido por el usuario:</p>
+    <ul>
+        <li>muestre "even" si el número es par</li>
+        <li>muestre "odd" si el número es impar</li>
+        <li>Sugerencia: Usa el operador módulo</li>
+    </ul>
+
+    <label for="numero">Número</label>
+    <input type="number" name="numero" id="numero">
+    <button type="submit" onclick="esPar()">Enviar</button>
+</body>
+
+</html>

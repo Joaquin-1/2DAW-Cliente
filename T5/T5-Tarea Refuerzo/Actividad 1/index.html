@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 1 - JmJ</title>
+</head>
+<body>
+
+    <p>1. Realizar un script que cuando pulse el usuario con el botón del ratón en cualquier sitio de
+        la pantalla, identifique si ha pulsado con el botón derecho, izquierdo o la rueda central.
+    </p>
+
+    <p id="resultado"></p>
+
+    <script> 
+    
+        document.addEventListener( "mouseup", (e) => {
+        
+        let parrafo = document.getElementById( "resultado");
+        
+        switch (e.button){
+            case 0: parrafo.innerText = "Has pulsado el botón principal del ratón" ; break;
+            case 1: parrafo.innerText = "Has pulsado el botón central del ratón (o rueda)" ; break;
+            case 2: parrafo.innerText = "Has pulsado el botón derecho" ; break;
+         }
+        });
+
+
+    
+    
+    </script>
+
+    
+</body>
+</html>

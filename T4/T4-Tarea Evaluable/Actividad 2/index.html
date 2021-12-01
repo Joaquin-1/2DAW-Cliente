@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 2 - JmJ</title>
+</head>
+<body>
+
+    <div>
+
+        <p>2) Crea un script que tome una serie de palabras ingresadas por el usuario y almacene esas palabras
+            en un array. Posteriormente, manipula ese array para mostrar en una nueva ventana los siguientes
+            datos:
+
+        <p>a) Todas las palabras.</p>    
+        <p>b) Todas las palabras colocadas al revés.</p>   
+        <p>c) La primera palabra ingresada por el usuario</p>  
+        <p>d) La última palabra ingresada por el usuario</p>   
+        <p>e) El número de palabras presentes en el array</p>   
+        <p>f) Las palabras ordenadas de la 'a' a la 'z'</p>   
+        <p>g) Las palabras Ordenadas de la 'z' a la 'a'</p>  
+
+        <label>Pon una frase</label>
+        <input id="input" type="text" name="input"> 
+        </br>
+        </br>
+        <input type="button" onclick="generarArray()" value="A) Generar Array">
+        </br>
+        </br>
+        <input type="button" onclick="alreves()" value="B) Invertir Array">
+        </br>
+        </br>
+        <input type="button" onclick="primPalabra()" value="C) Primera palabra">
+        </br>
+        </br>
+        <input type="button" onclick="ultPalabra()" value="D) Ultima palabra">
+        </br>
+        </br>
+        <input type="button" onclick="numPalabra()" value="E) Numero palabra">
+        </br>
+        </br>
+        <input type="button" onclick="deAhastaZ()" value="F) Ordenado de A a Z">
+        </br>
+        </br>
+        <input type="button" onclick="deZhastaA()" value="G) Ordenado de Z a A">    
+        <p id="resultado"></p>
+
+    </div>
+
+    <script>
+
+        
+    
+    //A) Todas las palabras.  
+
+    function generarArray() {
+
+        let input = document.getElementById("input").value;
+        let arrayDeCadenas = input.split(",");
+        console.log(arrayDeCadenas);
+        document.getElementById("resultado").innerHTML = "El array completo es: " + arrayDeCadenas;
+        
+    }
+    
+    //B Todas las palabras colocadas al revés.
+
+    function alreves() {
+
+        let input = document.getElementById("input").value;
+        let arrayDeCadenas = input.split(",").reverse();
+        document.getElementById("resultado").innerHTML = "El array al revés es: " + arrayDeCadenas;
+
+    }
+
+    //C La primera palabra ingresada por el usuario
+    
+    function primPalabra() {
+
+        let input = document.getElementById("input").value;
+        let arrayDeCadenas = input.split(",");
+        let primeraPalabra = arrayDeCadenas[0];
+        document.getElementById("resultado").innerHTML = "La primera palabra es: " + primeraPalabra;
+
+    } 
+
+    //D La última palabra ingresada por el usuario
+
+    function ultPalabra() {
+
+        let input = document.getElementById("input").value;
+        let arrayDeCadenas = input.split(",");
+        let ultimaPalabra = arrayDeCadenas[arrayDeCadenas.length -1]; 
+        document.getElementById("resultado").innerHTML = "La última palabra es: " + ultimaPalabra;
+
+    } 
+
+
+    //E El número de palabras presentes en el array
+
+    function numPalabra() {
+
+        let input = document.getElementById("input").value;
+        let arrayDeCadenas = input.split(",");
+        let numeroPalabra = arrayDeCadenas.length; 
+        document.getElementById("resultado").innerHTML = "El número de palabras es: " + numeroPalabra;
+
+    } 
+
+
+    //F Las palabras ordenadas de la 'a' a la 'z' !!!PONER ESPACIO EN EL INPUT!!!
+
+    function deAhastaZ() {
+
+        let input = document.getElementById("input").value;
+        let arrayDeCadenas = input.split(",");
+        let deAhastaZ = arrayDeCadenas.sort(); 
+        document.getElementById("resultado").innerHTML = "Las palabras ordenadas de A a Z son: " + deAhastaZ;
+
+
+    }
+
+    //G Las palabras Ordenadas de la 'z' a la 'a' !!!PONER ESPACIO EN EL INPUT!!!
+
+
+    function deZhastaA() {
+
+        let input = document.getElementById("input").value;
+        let arrayDeCadenas = input.split(",");
+        let deZhastaA = arrayDeCadenas.sort().reverse(); 
+        document.getElementById("resultado").innerHTML = "Las palabras ordenadas de Z a A son: " + deZhastaA;
+
+
+    }
+
+
+
+    </script>
+
+    <style>
+
+        input{
+            background-color: green;
+        }
+
+        #input{
+            background-color: white;
+        }
+
+    </style>
+    
+</body>
+</html>
