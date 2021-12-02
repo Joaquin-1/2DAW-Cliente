@@ -15,43 +15,43 @@
             <tr>
                 <td>DNI: </td>
                 <td>
-                    <input type="text" name="dni" id="dni" maxlength="9" pattern="[0-9]{8}[A-Za-z]{1}" title="Introduce 8 números y 1 letra" required/>
+                    <input type="text" name="dni" id="dni" maxlength="9" pattern="[0-9]{8}[A-Za-z]{1}" title="DNI" required/>
                 </td>
             </tr>
             <tr>
                 <td>Nombre: </td>
                 <td>
-                    <input type="text" name="nombre" id="nombre" pattern="^((\s?[a-zA-ZáéíóúÁÉÍÓÚñÑ]+){2,4})" title="Introduce entre 2 y 15 letras" required/>
+                    <input type="text" name="nombre" id="nombre" pattern="^((\s?[a-zA-ZáéíóúÁÉÍÓÚñÑ]+){2,4})" title="Nombre y apellidos" required/>
                 </td>
             </tr>
             <tr>
                 <td>Fecha Nacimiento: </td>
                 <td>
-                    <input type="text" name="fechaNac" id="fechaNac" pattern="/^(0[1-9]|[1-2]\d|3[01])(\/)(0[1-9]|1[012])\2(\d{4})$/" title="Numero de 9 cifras" required/>
+                    <input type="date" name="fechaNac" id="fechaNac" pattern="/^(0[1-9]|[1-2]\d|3[01])(\/)(0[1-9]|1[012])\2(\d{4})$/" title="Fecha de Nacimiento" required/>
                 </td>
             </tr>
             <tr>
                 <td>E-mail: </td>
                 <td>
-                    <input type="text" name="email" id="email" maxlength="15" pattern="[A-Za-z]{2,15}" title="Introduce entre 2 y 15 letras" required/>
+                    <input type="text" name="email" id="email" pattern="^[a-z]+\d*[a-z@[a-z]+\.[a-z]{2,3}(\.[a-z]{2,3})?" title="Email" required/>
                 </td>
             </tr>
             <tr>
                 <td>Página Web: </td>
                 <td>
-                    <input type="text" name="pagWeb" id="pagWeb" maxlength="15" pattern="[A-Za-z]{2,15}" title="Introduce entre 2 y 15 letras" required/>
-                </td>
+                    <input type="text" name="pagWeb" id="pagWeb" pattern="http(s)?:\/\/w{3}\.[a-z]*\.[a-z]{2,3}(\.[a-z]{2,3})?" title="Página web" required/>
+                </td>                                              
             </tr>
             <tr>
                 <td>Contraseña: </td>
                 <td>
-                    <input type="text" name="contraseña" id="contraseña maxlength="15" pattern="[A-Za-z]{2,15}" title="Introduce entre 2 y 15 letras" required/>
+                    <input type="password" name="contraseña" id="contraseña" pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\W]{8,10}$" title="Contraseña" required/>
                 </td>
             </tr>
             <tr>
                 <td>Confirmar Contraseña: </td>
                 <td>
-                    <input type="text" name="confContraseña" id="confContraseña" maxlength="15" pattern="[A-Za-z]{2,15}" title="Introduce entre 2 y 15 letras" required/>
+                    <input type="password" name="confContraseña" id="confContraseña" pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\W]{8,10}$" title="Confirmar Contraseña" required/>
                 </td>
             </tr>
             
@@ -59,7 +59,7 @@
         <p id="mensajeError"></p>
         <p>
             <input type="submit" value="Guardar" id="enviar" />
-            <input type="reset" value="Ver" id="borrar" />
+            <input type="button" id="ver" value="Ver"/>
         </p>
     </form>  
 
@@ -72,20 +72,26 @@
         //Esta función asocia un evento a la pulsación del botón enviar.
         function iniciar() {
             document.getElementById("enviar").addEventListener("click", validar, false);
+            document.getElementById("ver").addEventListener("click", cambiarPassAText, false);
         }
 
         function validaDNI(){
+            
             borrarError();
             var elemento = document.getElementById("dni");
             if (!elemento.checkValidity()){
                 if (elemento.validity.valueMissing){
-                    error2(elemento, "Debe introducir un DNI");
+                    error(elemento);
+                    
                 }
                 if (elemento.validity.patternMismatch){
-                    error2(elemento, "Introduce 8 números y 1 letra");
+                    error(elemento);
+                    document.getElementById("dni").value = "";
+                    //limpiarFormulario();
                 }
                 //error(elemento);
                 return false;
+                
             }
             return true;
         }
@@ -95,10 +101,12 @@
             var elemento = document.getElementById("nombre");
             if (!elemento.checkValidity()){
                 if (elemento.validity.valueMissing){
-                    error2(elemento, "Debe introducir un nombre");
+                    error(elemento);
                 }
                 if (elemento.validity.patternMismatch){
-                    error2(elemento, "Solo puedes tener 2 nombres y 2 apellidos como mucho");
+                    error(elemento);
+                    document.getElementById("nombre").value = "";
+                    //limpiarFormulario();
                 }
                 //error(elemento);
                 return false;
@@ -107,13 +115,15 @@
         }
 
         function validaFechaNac(){
+            borrarError();
             var elemento = document.getElementById("fechaNac");
             if (!elemento.checkValidity()){
                 if (elemento.validity.valueMissing){
-                    error2(elemento, "Debe introducir un Fecha nac");
+                    error(elemento);
                 }
                 if (elemento.validity.patternMismatch){
-                    error2(elemento, "Formato de fecha no válido");
+                    error(elemento);
+                    document.getElementById("fechaNac").value = "";
                 }
                 //error(elemento);
                 return false;
@@ -121,17 +131,18 @@
             return true;
         }
 
-        function validaEdad(){
-            var elemento = document.getElementById("edad");
+        function validaEmail(){
+            borrarError();
+            var elemento = document.getElementById("email");
             if (!elemento.checkValidity()){     
                 if (elemento.validity.valueMissing){
-                    error2(elemento, "Debe introducir un edad");
+                    error(elemento);
                 }
-                if (elemento.validity.rangeOverflow){
-                    error2(elemento, "El valor debe ser menor de 100");
-                }
-                if (elemento.validity.rangeUnderflow){
-                    error2(elemento, "El valor debe ser mayor o igual de 18");
+                if (elemento.validity.patternMismatch){
+                    error(elemento);
+                    document.getElementById("email").value = "";
+                    //limpiarFormulario();
+                    
                 }
                 //error(elemento);
                 return false;
@@ -139,14 +150,36 @@
             return true;
         }
 
-        function validaTelefono(){
-            var elemento = document.getElementById("telefono");
+        function validaPagWeb(){
+            borrarError();
+            var elemento = document.getElementById("pagWeb");
             if (!elemento.checkValidity()){
                 if (elemento.validity.valueMissing){
-                    error2(elemento, "Debe introducir un telefono");
+                    error(elemento);
                 }
                 if (elemento.validity.patternMismatch){
-                    error2(elemento, "El nombre debe tener 9 numeros");
+                    error(elemento);
+                    document.getElementById("pagWeb").value = "";
+                    //limpiarFormulario();
+                }
+               // error(elemento);
+                return false;
+            }
+            return true;
+        }
+
+        function validaContraseña(){
+            borrarError();
+            var elemento = document.getElementById("contraseña");
+            if (!elemento.checkValidity()){
+                if (elemento.validity.valueMissing){
+                    error(elemento);
+                }
+
+                if (elemento.validity.patternMismatch){
+                    error(elemento);
+                    document.getElementById("contraseña").value = "";
+                    //limpiarFormulario();
                 }
                // error(elemento);
                 return false;
@@ -155,10 +188,57 @@
         }
 
 
+        function validaConfContraseña(){
+            borrarError();
+            var elemento1 = document.getElementById("contraseña")
+            var elemento = document.getElementById("confContraseña");
+            if (!elemento.checkValidity()){
+                if (elemento.validity.valueMissing){
+                    error(elemento);
+                }
+
+                if (elemento.value != elemento1.value){
+                    error(elemento);
+                    document.getElementById("confContraseña").value = "";
+                    //limpiarFormulario();
+                }
+               // error(elemento);
+                return false;
+            }
+            return true;
+        }
+
+        let contador = 0
+
+        function cambiarPassAText() {
+
+            var elemento1 = document.getElementById("contraseña")
+            var elemento = document.getElementById("confContraseña");
+
+            
+
+            if (contador % 2 == 0) // Si la checkbox de mostrar contraseña está activada
+            {
+                elemento.type = "text";
+                elemento1.type = "text";
+                contador++;
+                console.log(contador);
+            } else if (contador % 2 == 1) {
+                elemento.type = "password";
+                elemento1.type = "password";
+                contador++;
+            }
+
+
+        }
+
+
         function validar(e) {
             borrarError();
-            if (validaDNI() && validaNombre() && validaFechaNac() && validaTelefono() && validaFecha() && validaCheck() && confirm("Pulsa para enviar el formulario")) {
+            if (validaDNI() && validaNombre() && validaFechaNac() && validaEmail() && validaPagWeb() && validaContraseña() && validaConfContraseña() && confirm("Pulsa para enviar el formulario")) {
                 return true;
+                document.getElementById("mensajeError").innerHTML = "";
+
             } else {
                 //Previene que el formulario te lleve a la página "procesar.php"
                 e.preventDefault();
@@ -166,17 +246,15 @@
             }
         }
 
+
+        //Ejercicio 6
         function error(elemento){
             document.getElementById("mensajeError").innerHTML = elemento.validationMessage;
             elemento.className="error";
             elemento.focus();
         }
 
-        function error2(elemento, mensaje){
-            document.getElementById("mensajeError").innerHTML = mensaje;
-            elemento.className="error";
-            elemento.focus();
-        }
+        
 
         function borrarError(){
             var formulario = document.forms[0];
@@ -184,6 +262,12 @@
                 formulario.elements[i].className="";
             }
         }
+
+        //function limpiarFormulario() {
+        //    document.getElementById("miFormulario").reset();
+        //}
+
+        
 
     </script>
     

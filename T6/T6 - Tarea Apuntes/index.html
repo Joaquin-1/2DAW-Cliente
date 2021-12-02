@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 1 - JmJ</title>
+</head>
+<body>
+
+    <p>Crear una array multidimensional que recoja los nombres de 5 alumnos y las notas obtenidas en tres
+        módulos. Dicha información será introducida por el usuario y una vez finalizada la recogida de datos
+        se mostrará el contenido del array en forma de tabla generándola con métodos del DOM.
+    </p>
+    
+    <input type="text" id="input1">
+    <input type="text" id="input2">
+    <input type="text" id="input3">
+    <input type="text" id="input4">
+    <input type="button" value="Capturar" onclick="Capturar()">
+    
+   
+
+
+    
+
+    <script>
+
+
+        function Alumno(nombre, notasignatura1, notasignatura2 , notasignatura3) {
+                        this.nombre = nombre;
+                        this.notasignatura1 = notasignatura1;
+                        this.notasignatura2 = notasignatura2;
+                        this.notasignatura3 = notasignatura3;
+                        
+        }
+
+                    
+                
+
+                
+                    //B Instanciar dos objetos.
+                
+        const alumno1 = new Alumno('Paco', '5', '6', '6'); 
+        const alumno2 = new Alumno('Manolo', '9', '7', '6');
+        const alumno3 = new Alumno('Juan', '6', '7', '6'); 
+        const alumno4 = new Alumno('Pedro', '2', '3', '0'); 
+        const alumno5 = new Alumno('Federico', '7', '5', '7');
+        
+        const alumnos = [alumno1, alumno2, alumno3, alumno4, alumno5];
+        console.log(alumnos);
+
+        //let nombre = document.getElementById("input1");
+        //let numero1 = document.getElementById("input2");
+        //let numero2 = document.getElementById("input3");
+        //let numero3 = document.getElementById("input4");
+
+        //savearray = [];
+        var Capturar = function(){
+            
+            //var array = [];                                 
+            //for (var i = 0; i < 4; i++) {               
+            //    array[i] = document.getElementById("input"+(i+1)).value;
+            //    
+            //}
+            //savearray.push (array[i]);  
+            //console.log(array);
+
+
+            
+            let body = document.getElementsByTagName("body")[0];
+
+           
+            let tbl = document.createElement("table");
+            let tblBody = document.createElement("tbody");
+            
+            //Crear las celdas
+            for (let i = 0; i < alumnos.length; i++) {
+
+                let fila = document.createElement("tr");
+                console.log(alumnos[i]);
+                
+            
+              for (let j = 0; j < alumnos[i].length; j++) {
+
+                let columna = document.createElement("td");
+                let cellText = document.createTextNode("Lavate" + i);
+                
+                columna.appendChild(cellText);
+                fila.appendChild(columna);
+              }
+          
+              
+              tblBody.appendChild(fila);
+            }
+
+           
+            tbl.appendChild(tblBody);
+            
+            body.appendChild(tbl);
+            
+            tbl.setAttribute("border", "2");
+
+
+        }   
+
+
+
+
+
+        
+
+
+        
+                
+    </script>
+    
+</body>
+</html>
